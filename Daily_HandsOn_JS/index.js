@@ -1,4 +1,4 @@
-let userDetail = new Array();
+let reciepeDetails = new Array();
 const choice = prompt(`Whats your choice ? 
         1:Add Recipe
         2.Update.Recipe
@@ -28,36 +28,35 @@ switch (Number(choice)) {
 }
 
 function addReciepe() {
-  //   console.log(userDetail.length());
-  let id = userDetail.length + 1;
-  let userName = prompt("enter Your Name: ");
-  let userType = prompt("Enter The type of food: ");
-  let userDesc = prompt("enter description for food: ");
+  const id = reciepeDetails.length + 1;
+  const reciepeName = prompt("enter Your reciepe Name: ");
+  const reciepeType = prompt("Enter The type of food: ");
+  const reciepeDesc = prompt("enter reciepe description for food: ");
 
-  let newRecipe = { id, userName, userType, userDesc };
+  let reciepeDetail = { id, reciepeName, reciepeType, reciepeDesc };
 
-  userDetail.push(newRecipe);
+  reciepeDetails.push(reciepeDetail);
 
   console.log("Reciepe added successfully!");
 }
 
 function updateReciepe() {
-  let reciepeId = prompt("enter the id of the reciepe you want to update:");
-  let index = findRecipeIndex(reciepeId);
+  const reciepeId = prompt("enter the id of the reciepe you want to update:");
+  const reciepeIndex = findRecipeIndex(reciepeId);
 
   if (index !== -1) {
-    let updatedName = prompt("Update Your Name: ");
-    if (updatedName) {
-      userDetail[index].userName = updatedName;
+    const updatedReciepeName = prompt("Update Your Name: ");
+    if (updatedReciepeName) {
+      reciepeDetails[reciepeIndex].reciepeName = updatedReciepeName;
     }
-    let updatedFood = prompt("Update The type of food: ");
-    if (updatedFood) {
-      userDetail[index].userType = updatedFood;
+    const updateReciepeFood = prompt("Update The type of food: ");
+    if (updateReciepeFood) {
+      reciepeDetails[reciepeIndex].reciepeType = updateReciepeFood;
     }
 
-    let updatedDesc = prompt("Update description for food: ");
-    if (updatedDesc) {
-      userDetail[index].userDesc = updatedDesc;
+    const updateReciepeDesc = prompt("Update description for food: ");
+    if (updateReciepeDesc) {
+      reciepeDetails[reciepeIndex].reciepeDesc = updateReciepeDesc;
     }
 
     console.log("updated successfully");
@@ -67,11 +66,11 @@ function updateReciepe() {
 }
 
 function deleteReciepe() {
-  let userId = prompt("Enter the ID of the recipe you want to delete:");
-  let index = findRecipeIndex(userId);
+  const reciepeId = prompt("Enter the ID of the recipe you want to delete:");
+  const reciepeIndex = findRecipeIndex(reciepeId);
 
-  if (index !== -1) {
-    userDetail.splice(index, 1);
+  if (reciepeIndex !== -1) {
+    userDetail.splice(reciepeIndex, 1);
 
     console.log("Recipe deleted successfully!");
   } else {
@@ -81,20 +80,20 @@ function deleteReciepe() {
 
 function viewRecipes() {
   let count = 1;
-  if (userDetail.length === 0) {
+  if (reciepeDetails.length === 0) {
     console.log("No recipes available.");
   } else {
     console.log("Recipes:");
-    userDetail.forEach((recipe) => {
+    reciepeDetails.forEach((recipe) => {
       recipe.id = count;
       count++;
       console.log(
-        `ID: ${recipe.id}, Name: ${recipe.userName}, Type: ${recipe.userType}, Description: ${recipe.userDesc}`
+        `ID: ${recipe.id}, Name: ${recipe.reciepeName}, Type: ${recipe.reciepeType}, Description: ${recipe.reciepeDesc}`
       );
     });
   }
 }
 
 function findRecipeIndex(recipeId) {
-  return userDetail.findIndex((recipe) => recipe.id == recipeId);
+  return reciepeDetails.findIndex((recipe) => recipe.id == recipeId);
 }
