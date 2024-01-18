@@ -44,7 +44,7 @@ function updateReciepe() {
   const reciepeId = prompt("enter the id of the reciepe you want to update:");
   const reciepeIndex = findRecipeIndex(reciepeId);
 
-  if (index !== -1) {
+  if (reciepeIndex !== -1) {
     const updatedReciepeName = prompt("Update Your Name: ");
     if (updatedReciepeName) {
       reciepeDetails[reciepeIndex].reciepeName = updatedReciepeName;
@@ -70,7 +70,7 @@ function deleteReciepe() {
   const reciepeIndex = findRecipeIndex(reciepeId);
 
   if (reciepeIndex !== -1) {
-    userDetail.splice(reciepeIndex, 1);
+    reciepeDetails.splice(reciepeIndex, 1);
 
     console.log("Recipe deleted successfully!");
   } else {
