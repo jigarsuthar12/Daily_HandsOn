@@ -85,7 +85,6 @@ const findpostuid = async () => {
 
   const completedtasks = tasks.filter((item) => {
     if (item.userId === 1 && item.completed === true) {
-      console.log(item);
       return item;
     }
   });
